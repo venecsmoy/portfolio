@@ -157,12 +157,27 @@ body {
     color: var(--text-color);
 }
 
+/* Project Categories */
+.project-category-title {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.project-category-title:first-of-type {
+    margin-top: 2rem;
+}
+
 /* Projects Grid */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .project-card {

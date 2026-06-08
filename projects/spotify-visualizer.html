@@ -61,9 +61,9 @@
             border-left: 4px solid var(--primary-color);
             margin: 1.5rem 0;
         }
-        .wip-badge {
+        .complete-badge {
             display: inline-block;
-            background-color: #f59e0b;
+            background-color: #10b981;
             color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
@@ -85,6 +85,16 @@
             font-size: 0.875rem;
             font-weight: 600;
         }
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body>
@@ -105,172 +115,199 @@
 
         <h1>
             Spotify Audio Visualizer Overlay
-            <span class="wip-badge">In Progress</span>
+            <span class="complete-badge">Complete</span>
         </h1>
         <div class="meta-info">
-            Personal Project | June 2026
+            Personal Project | June 2026 | <a href="https://github.com/venecsmoy/spotify-wave-visualizer" target="_blank">View on GitHub</a>
         </div>
 
         <div class="tech-stack-large">
-            <span class="tech-tag-large">JavaScript</span>
-            <span class="tech-tag-large">Spotify API</span>
-            <span class="tech-tag-large">Canvas</span>
-            <span class="tech-tag-large">Web Audio API</span>
-            <span class="tech-tag-large">HTML/CSS</span>
+            <span class="tech-tag-large">Python</span>
+            <span class="tech-tag-large">Tkinter</span>
+            <span class="tech-tag-large">SoundDevice</span>
+            <span class="tech-tag-large">NumPy</span>
+            <span class="tech-tag-large">FFT Analysis</span>
+            <span class="tech-tag-large">VB-CABLE</span>
         </div>
 
         <div class="section-block">
             <h2>Overview</h2>
             <p>
-                Building an immersive audio visualizer overlay for Spotify that displays real-time
-                audio visualizations while the app is idle in fullscreen mode. The goal is to create
-                a visually engaging experience that enhances the listening experience without
-                interfering with normal app usage.
+                A real-time audio visualizer that creates a transparent overlay at the top of your screen,
+                displaying smooth waveform visualizations synchronized with Spotify playback. The visualizer
+                uses FFT (Fast Fourier Transform) to analyze audio frequencies and renders them as flowing
+                waves across the screen width, with bass frequencies on the left and vocals/highs on the right.
             </p>
         </div>
 
         <div class="highlight-box">
-            <strong>Motivation:</strong> Create a screensaver-like experience for Spotify during idle
-            periods that visualizes the music in real-time, similar to classic media player visualizers
-            but designed for modern fullscreen usage.
+            <strong>Key Achievement:</strong> Built a production-ready desktop audio visualizer with
+            RMS-based silence detection, frequency-mapped visualization, and VB-CABLE integration for
+            system-wide audio capture—all running at 60 FPS with minimal CPU overhead.
         </div>
 
         <div class="section-block">
-            <h2>Planned Features</h2>
+            <h2>Implemented Features</h2>
 
             <h3>Core Functionality</h3>
             <ul>
-                <li><strong>Real-Time Audio Visualization:</strong> Capture and visualize audio frequencies in sync with playback</li>
-                <li><strong>Fullscreen Overlay Mode:</strong> Seamlessly overlay visualizer when Spotify is idle in fullscreen</li>
-                <li><strong>Multiple Visualization Styles:</strong> Different visual patterns (bars, waveforms, particles, etc.)</li>
-                <li><strong>Spotify Integration:</strong> Fetch currently playing track info and album art</li>
-                <li><strong>Idle Detection:</strong> Automatically activate when user is inactive</li>
-                <li><strong>Non-Intrusive:</strong> Dismiss on user interaction without disrupting playback</li>
-            </ul>
-
-            <h3>Visual Elements</h3>
-            <ul>
-                <li>Frequency spectrum analyzer (classic bars)</li>
-                <li>Waveform visualization</li>
-                <li>Particle system reacting to audio</li>
-                <li>Album art integration with color extraction</li>
-                <li>Track metadata display (title, artist, album)</li>
-                <li>Smooth transitions between visualization modes</li>
-            </ul>
-        </div>
-
-        <div class="section-block">
-            <h2>Technical Approach</h2>
-
-            <h3>Spotify API Integration</h3>
-            <ul>
-                <li>OAuth authentication for user access</li>
-                <li>Web Playback SDK for audio stream access</li>
-                <li>Currently Playing endpoint for track metadata</li>
-                <li>Real-time playback state monitoring</li>
+                <li><strong>Transparent Overlay:</strong> Full-width window at top of screen (150px height) with transparent background</li>
+                <li><strong>Real-Time Audio Capture:</strong> Uses VB-Audio Virtual Cable to capture system audio</li>
+                <li><strong>Frequency Spectrum Analysis:</strong> FFT-based frequency analysis with 300 wave points</li>
+                <li><strong>RMS-Based Silence Detection:</strong> Automatically fades to flat line when music is paused</li>
+                <li><strong>Smooth Wave Rendering:</strong> 60 FPS animation with Bezier curve smoothing</li>
+                <li><strong>Always-on-Top Mode:</strong> Overlay stays visible over all applications including fullscreen</li>
             </ul>
 
             <h3>Audio Processing</h3>
             <ul>
-                <li><strong>Web Audio API:</strong> Analyze audio frequencies in real-time</li>
-                <li><strong>AnalyserNode:</strong> Extract frequency and time-domain data</li>
-                <li><strong>FFT Processing:</strong> Fast Fourier Transform for frequency analysis</li>
-                <li><strong>Audio Context:</strong> Connect Spotify playback to analyzer</li>
+                <li><strong>FFT Analysis:</strong> Fast Fourier Transform on 2048-sample chunks at 44.1kHz</li>
+                <li><strong>Frequency Mapping:</strong> Bass (left) → Mids (center) → Vocals/Highs (right)</li>
+                <li><strong>Bass Boost:</strong> 30% amplitude boost for low frequencies (first 30% of spectrum)</li>
+                <li><strong>Adaptive Smoothing:</strong> 70% retention for natural motion, 85% during silence</li>
+                <li><strong>Normalization:</strong> Dynamic range compression for balanced visualization</li>
             </ul>
 
-            <h3>Visualization Rendering</h3>
+            <h3>VB-CABLE Integration</h3>
             <ul>
-                <li><strong>HTML Canvas:</strong> High-performance 2D rendering</li>
-                <li><strong>RequestAnimationFrame:</strong> Smooth 60fps animations</li>
-                <li><strong>Dynamic Scaling:</strong> Responsive to different screen sizes</li>
-                <li><strong>Color Theming:</strong> Extract colors from album art for cohesive visuals</li>
-            </ul>
-        </div>
-
-        <div class="section-block">
-            <h2>Design Challenges</h2>
-
-            <h3>1. Audio Stream Access</h3>
-            <p>
-                <strong>Challenge:</strong> Accessing Spotify's audio stream for real-time analysis
-                while respecting API limitations and DRM.
-            </p>
-            <p>
-                <strong>Approach:</strong> Utilize Web Playback SDK and Web Audio API to capture
-                audio context without violating terms of service.
-            </p>
-
-            <h3>2. Fullscreen Overlay Implementation</h3>
-            <p>
-                <strong>Challenge:</strong> Creating an overlay that works in fullscreen mode without
-                conflicting with Spotify's UI.
-            </p>
-            <p>
-                <strong>Approach:</strong> Browser extension or standalone web app with Spotify
-                integration, detecting idle state and activating overlay.
-            </p>
-
-            <h3>3. Performance Optimization</h3>
-            <p>
-                <strong>Challenge:</strong> Maintaining 60fps visualization without impacting audio
-                playback or system performance.
-            </p>
-            <p>
-                <strong>Approach:</strong> Efficient Canvas rendering, requestAnimationFrame,
-                and optimized FFT processing with appropriate buffer sizes.
-            </p>
-        </div>
-
-        <div class="section-block">
-            <h2>Current Status</h2>
-
-            <h3>In Development</h3>
-            <ul>
-                <li>Spotify API authentication setup</li>
-                <li>Web Audio API integration and audio analysis</li>
-                <li>Basic frequency spectrum visualizer prototype</li>
-                <li>Canvas rendering pipeline</li>
-            </ul>
-
-            <h3>Planned Next Steps</h3>
-            <ul>
-                <li>Implement idle detection logic</li>
-                <li>Add multiple visualization modes</li>
-                <li>Integrate album art color extraction</li>
-                <li>Build fullscreen overlay mechanism</li>
-                <li>Add user configuration options (sensitivity, colors, modes)</li>
-                <li>Test performance across different systems</li>
+                <li>Routes Spotify audio through virtual cable for capture</li>
+                <li>"Listen to this device" feature enables simultaneous listening and visualization</li>
+                <li>Works with any audio source (Spotify, YouTube, games, etc.)</li>
+                <li>Zero latency audio passthrough</li>
             </ul>
         </div>
 
         <div class="section-block">
-            <h2>Learning Goals</h2>
+            <h2>Technical Implementation</h2>
+
+            <h3>Audio Pipeline</h3>
+            <p>The visualizer implements a complete audio processing pipeline:</p>
+            <div class="code-block">
+Spotify → CABLE Input (virtual output)
+    ↓
+CABLE Output (virtual microphone) → Visualizer (FFT Analysis)
+    ↓
+Listen Mode → Real Headphones/Speakers
+            </div>
+
+            <h3>Silence Detection Algorithm</h3>
+            <p>Uses RMS (Root Mean Square) for accurate silence detection:</p>
+            <div class="code-block">
+rms = sqrt(mean(audio_data²))
+
+if rms < 0.001:
+    # Fade to flat (85% decay per frame)
+    wave_data *= 0.85
+else:
+    # Perform FFT and visualize
+    fft_magnitude = abs(fft(audio_data))
+    normalize and render...
+            </div>
+
+            <h3>Frequency Distribution</h3>
             <ul>
-                <li>Master Web Audio API for audio analysis and processing</li>
-                <li>Deepen Canvas API knowledge for high-performance rendering</li>
-                <li>Learn Spotify API integration and OAuth flows</li>
-                <li>Optimize JavaScript performance for real-time graphics</li>
-                <li>Understand audio frequency analysis and FFT algorithms</li>
-                <li>Practice building immersive user experiences</li>
+                <li><strong>Spectrum Range:</strong> 0 Hz to 8.8 kHz (40% of FFT output)</li>
+                <li><strong>Left 30%:</strong> Bass & kick drums (20-300 Hz) with 1.3x boost</li>
+                <li><strong>Middle 40%:</strong> Vocals & instruments (300-2000 Hz)</li>
+                <li><strong>Right 30%:</strong> Hi-hats, cymbals, vocal harmonics (2-8 kHz)</li>
+            </ul>
+
+            <h3>Performance Optimizations</h3>
+            <ul>
+                <li>Efficient NumPy operations for FFT processing</li>
+                <li>Audio queue system to prevent blocking</li>
+                <li>Smooth Bezier curves with splinesteps=12</li>
+                <li>16ms update interval (62.5 FPS target)</li>
+                <li>Minimal memory footprint (~50MB RAM)</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Design Challenges & Solutions</h2>
+
+            <h3>1. Silence Detection Without Amplifying Noise</h3>
+            <p>
+                <strong>Challenge:</strong> When music paused, background noise was being normalized to full amplitude,
+                causing wild oscillations instead of a flat line.
+            </p>
+            <p>
+                <strong>Solution:</strong> Implemented RMS-based silence detection (threshold: 0.001). When below
+                threshold, apply 85% decay instead of FFT visualization. This prevents noise amplification while
+                maintaining smooth fade-to-flat behavior.
+            </p>
+
+            <h3>2. Frequency Distribution Across Full Screen</h3>
+            <p>
+                <strong>Challenge:</strong> Linear frequency mapping caused all visualization activity to bunch
+                up on the left quarter of the screen.
+            </p>
+            <p>
+                <strong>Solution:</strong> Extended frequency range to 40% of FFT spectrum and applied linear
+                mapping with bass boost. This spreads bass, mids, and highs naturally across the full screen width.
+            </p>
+
+            <h3>3. VB-CABLE Audio Routing</h3>
+            <p>
+                <strong>Challenge:</strong> Routing audio to visualizer while still hearing it through headphones.
+            </p>
+            <p>
+                <strong>Solution:</strong> Set CABLE Input as default playback device, then enable "Listen to this
+                device" on CABLE Output to route audio back to physical speakers. Visualizer captures from CABLE Output.
+            </p>
+        </div>
+
+        <div class="section-block">
+            <h2>Usage</h2>
+            <div class="code-block">
+# Install dependencies
+pip install sounddevice numpy tkinter
+
+# Run visualizer
+python visualizer.py
+
+# Controls
+ESC key - Close visualizer
+            </div>
+
+            <h3>Setup Requirements</h3>
+            <ul>
+                <li>Install VB-Audio Virtual Cable</li>
+                <li>Set CABLE Input as default playback device</li>
+                <li>Enable "Listen to this device" on CABLE Output</li>
+                <li>Select your headphones as the listen-through device</li>
+                <li>Run the visualizer and play Spotify</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Learning Outcomes</h2>
+            <ul>
+                <li><strong>Digital Signal Processing:</strong> Practical experience with FFT, frequency analysis, and RMS calculations</li>
+                <li><strong>Real-Time Audio:</strong> Understanding audio buffering, sample rates, and low-latency processing</li>
+                <li><strong>NumPy Optimization:</strong> Efficient array operations for performance-critical applications</li>
+                <li><strong>UI/UX Design:</strong> Creating non-intrusive overlay interfaces with transparent windows</li>
+                <li><strong>Virtual Audio Routing:</strong> System-level audio capture and routing techniques</li>
+                <li><strong>Iterative Problem Solving:</strong> Debugging RMS thresholds, frequency mapping, and smoothing parameters</li>
             </ul>
         </div>
 
         <div class="highlight-box">
-            <strong>Technologies Explored:</strong> This project provides hands-on experience with
-            browser APIs (Web Audio, Canvas), real-time data processing, performance optimization,
-            and creative coding—expanding skills beyond traditional web development.
+            <strong>Technologies Mastered:</strong> This project provided deep hands-on experience with
+            audio signal processing, real-time data visualization, Python performance optimization, and
+            system-level audio capture—skills applicable to audio engineering, data visualization, and
+            real-time systems development.
         </div>
 
         <div class="section-block">
-            <h2>Potential Features</h2>
+            <h2>Future Enhancements</h2>
             <ul>
+                <li>Multiple visualization modes (particles, circular spectrum, 3D waves)</li>
+                <li>Spotify API integration to display album art and track info</li>
                 <li>Customizable color schemes and themes</li>
-                <li>Beat detection for reactive animations</li>
-                <li>Configurable idle timeout duration</li>
-                <li>Multiple visualization presets</li>
-                <li>Keyboard shortcuts for mode switching</li>
-                <li>Genre-specific visualization styles</li>
-                <li>Save/export visualizations as video</li>
+                <li>Beat detection for reactive visual effects</li>
+                <li>Configuration GUI for sensitivity and frequency ranges</li>
+                <li>Export visualization as video recording</li>
+                <li>Multi-monitor support with position customization</li>
             </ul>
         </div>
     </div>

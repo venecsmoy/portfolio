@@ -1,114 +1,41 @@
-# Deployment Instructions
+# Viewing the Portfolio
 
-## GitHub Pages Setup
+This portfolio is hosted on GitHub Pages and can be viewed at:
 
-Follow these steps to deploy your portfolio site to GitHub Pages:
+**https://venecsmoy.github.io/portfolio/**
 
-### 1. Create GitHub Repository
+## Quick Links
 
-```bash
-# Make sure you're in the portfolio-site directory
-cd /c/Users/VenecMoy/portfolio-site
+- **Live Portfolio:** https://venecsmoy.github.io/portfolio/
+- **GitHub Repository:** https://github.com/venecsmoy/portfolio
 
-# Create a new repository on GitHub (do this via GitHub.com):
-# - Go to https://github.com/new
-# - Repository name: "portfolio" (or any name you prefer)
-# - Description: "Personal portfolio showcasing software engineering projects"
-# - Make it Public
-# - Do NOT initialize with README (we already have one)
-# - Click "Create repository"
-```
+## What's Included
 
-### 2. Link Local Repository to GitHub
+The portfolio showcases:
 
-After creating the repository on GitHub, run these commands:
+- **Professional Experience** - Current internship at WellSky
+- **Featured Projects** - 4 detailed project case studies including:
+  - Enterprise Data Portal UI Redesign
+  - Backend Architecture Refactor Review
+  - Intern Coding Challenge Design
+  - Spotify Audio Visualizer (Personal Project)
+- **Technical Skills** - Frontend, Backend, Cloud & Data, Tools & Workflow
 
-```bash
-# Add the remote (replace YOUR_USERNAME with your GitHub username)
-git remote add origin git@github.com:YOUR_USERNAME/portfolio.git
+## Navigating the Portfolio
 
-# Verify the remote was added
-git remote -v
+- Click on any project card to view detailed information
+- Use the navigation menu to jump to specific sections
+- All external links open in the same tab
+- The site is fully responsive - works on mobile, tablet, and desktop
 
-# Push to GitHub
-git branch -M main
-git push -u origin main
-```
+## Technology Stack
 
-### 3. Enable GitHub Pages
+This portfolio is built with:
+- HTML5 & CSS3
+- Vanilla JavaScript
+- Responsive Design
+- GitHub Pages for hosting
 
-1. Go to your repository on GitHub
-2. Click "Settings" tab
-3. Scroll down to "Pages" in the left sidebar
-4. Under "Source", select:
-   - Branch: `main`
-   - Folder: `/ (root)`
-5. Click "Save"
-6. Wait a few minutes for deployment
+---
 
-### 4. Access Your Site
-
-Your site will be available at:
-```
-https://YOUR_USERNAME.github.io/portfolio/
-```
-
-(Replace `YOUR_USERNAME` with your actual GitHub username)
-
-## Updating Your Portfolio
-
-After making changes:
-
-```bash
-cd /c/Users/VenecMoy/portfolio-site
-
-# Stage your changes
-git add .
-
-# Commit with a descriptive message
-git commit -m "Update: Add new project / Fix styling / etc."
-
-# Push to GitHub
-git push
-
-# GitHub Pages will automatically rebuild and deploy
-```
-
-## Custom Domain (Optional)
-
-If you want to use a custom domain:
-
-1. Buy a domain from a registrar (e.g., Namecheap, Google Domains)
-2. In your repository settings > Pages, add your custom domain
-3. Configure your domain's DNS settings:
-   - Add an A record pointing to GitHub Pages IPs
-   - Or add a CNAME record pointing to `YOUR_USERNAME.github.io`
-4. Wait for DNS propagation (can take up to 24 hours)
-
-## Troubleshooting
-
-### Site Not Loading
-- Make sure GitHub Pages is enabled in settings
-- Check that the source branch is correct (`main`)
-- Wait 5-10 minutes after first push
-
-### Links Not Working
-- If using a custom domain, make sure DNS is configured correctly
-- Check that all href links are relative, not absolute
-
-### Images/Styles Not Loading
-- Verify all file paths are correct and case-sensitive
-- Make sure files are committed and pushed to GitHub
-
-## Local Testing
-
-Before pushing changes, test locally:
-
-```bash
-# Simple Python server
-python -m http.server 8000
-
-# Then visit http://localhost:8000 in your browser
-```
-
-Or just open `index.html` directly in your browser.
+For questions or collaboration opportunities, please reach out via GitHub.

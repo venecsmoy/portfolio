@@ -130,9 +130,9 @@
     <div class="project-detail">
         <a href="../index.html#projects" class="back-link">← Back to Projects</a>
 
-        <h1>Data Formulator Architectural Refactor Review</h1>
+        <h1>Data Management Tool Architectural Refactor Review</h1>
         <div class="meta-info">
-            WellSky | June 2026 | Author: Jaylen Sinclair | Reviewer: Venec Moy
+            WellSky | June 2026
         </div>
 
         <div class="tech-stack-large">
@@ -148,8 +148,8 @@
             <h2>Overview</h2>
             <p>
                 Conducted comprehensive technical review of a massive architectural refactor that simplified
-                the Data Formulator application by removing 10,804 net lines of code, locking to BigQuery-only
-                data source, and integrating Vertex AI. The review identified critical breaking changes,
+                a data management application by removing 10,804 net lines of code, focusing on a single
+                cloud data platform, and integrating AI capabilities. The review identified critical breaking changes,
                 security improvements, and test coverage enhancements.
             </p>
         </div>
@@ -194,57 +194,58 @@
             <h3>1. Exceptional Code Reduction</h3>
             <ul>
                 <li><strong>10,804 lines removed</strong> through elimination of unused features</li>
-                <li>Deleted 12 Chinese translation files (~1,711 lines of i18n overhead)</li>
-                <li>Removed demo streaming backend (<code>demo_stream.py</code> - 1,168 lines)</li>
-                <li>Eliminated gallery UI (<code>ChartGallery.tsx</code> - 1,609 lines)</li>
-                <li>Removed 609-line translation guide and infrastructure</li>
+                <li>Removed internationalization files for unused language support</li>
+                <li>Eliminated demo and example data infrastructure</li>
+                <li>Removed unused UI components and gallery features</li>
+                <li>Simplified multi-language support infrastructure</li>
             </ul>
 
             <h3>2. Strong Test Coverage</h3>
-            <p>Identified 6 new comprehensive test suites:</p>
+            <p>Identified 6 new comprehensive test suites covering:</p>
             <ul>
-                <li><code>test_bigquery_auto_provision.py</code> (95 lines) - Auto-provisioning logic</li>
-                <li><code>test_bigquery_loader_caps.py</code> (68 lines) - Loader limits</li>
-                <li><code>test_bigquery_only_registry.py</code> (90 lines) - Registry lock enforcement</li>
-                <li><code>test_secure_filename.py</code> (55 lines) - Security hardening</li>
-                <li><code>test_tool_show_user_data_preview.py</code> (113 lines) - Preview tool testing</li>
-                <li><code>test_data_loaders_bigquery_only.py</code> (69 lines) - API endpoint tests</li>
+                <li>Auto-provisioning logic and configuration management</li>
+                <li>Data loader capacity limits and constraints</li>
+                <li>Single-platform registry enforcement</li>
+                <li>Security hardening for file operations</li>
+                <li>Data preview functionality and edge cases</li>
+                <li>API endpoint validation and integration tests</li>
             </ul>
             <p>
-                <strong>Test Quality Assessment:</strong> Comprehensive edge case coverage, clear docstrings
-                explaining rationale, proper use of pytest markers, clean mocking strategy.
+                <strong>Test Quality Assessment:</strong> Comprehensive edge case coverage, clear documentation
+                explaining test rationale, proper test framework usage, clean mocking strategy.
             </p>
 
-            <h3>3. WellSky Branding Integration</h3>
+            <h3>3. Corporate Branding Integration</h3>
             <ul>
-                <li>Updated <code>index.html</code> title and meta tags to "WellSky Data Management Portal"</li>
-                <li>Added WellSky logo (<code>app-logo.png</code>)</li>
+                <li>Updated application branding throughout the interface</li>
+                <li>Integrated corporate logo and visual assets</li>
                 <li>Removed external links and upstream project references</li>
-                <li>Consistent branding in <code>App.tsx</code></li>
+                <li>Applied consistent branding across all components</li>
             </ul>
 
-            <h3>4. Production-Ready BigQuery Improvements</h3>
+            <h3>4. Production-Ready Platform Improvements</h3>
             <ul>
-                <li>Increased dataset enumeration from 50 to 1,000 max results</li>
-                <li>Increased table enumeration from 20 to 1,000 per dataset</li>
-                <li>Raised total table limit from 100 to 5,000 with warning logs</li>
-                <li>Implemented auto-provisioning via <code>VERTEX_AI_PROJECT</code> or <code>BQ_PROJECT_ID</code></li>
-                <li>Default <code>US</code> location with <code>BIGQUERY_LOCATION</code> override</li>
+                <li>Significantly increased dataset enumeration limits for enterprise scale</li>
+                <li>Enhanced table discovery capacity across multiple datasets</li>
+                <li>Implemented auto-provisioning via environment configuration</li>
+                <li>Added configurable region/location support</li>
+                <li>Improved logging for large-scale operations</li>
             </ul>
 
-            <h3>5. Vertex AI Integration</h3>
+            <h3>5. AI Platform Integration</h3>
             <ul>
-                <li>Added <code>vertex_ai</code> to <code>BUILTIN_PROVIDERS</code></li>
-                <li>Authentication via ADC (Application Default Credentials) - no API keys needed</li>
-                <li>Project/location configuration via environment variables</li>
-                <li>Proper model registry integration</li>
+                <li>Integrated cloud-based AI services</li>
+                <li>Implemented secure authentication using platform credentials</li>
+                <li>Configured via environment variables for flexibility</li>
+                <li>Proper service provider registry integration</li>
             </ul>
 
             <h3>6. Security Improvements</h3>
             <ul>
-                <li>Added filename sanitization testing</li>
-                <li>Removed demo data streaming endpoint (reduced attack surface)</li>
-                <li>Likely removed local folder loader (reduced arbitrary file access risk)</li>
+                <li>Added filename sanitization and validation</li>
+                <li>Removed demo endpoints to reduce attack surface</li>
+                <li>Restricted local file system access paths</li>
+                <li>Implemented secure credential handling</li>
             </ul>
         </div>
 
@@ -257,26 +258,26 @@
                 or migration documentation.
             </p>
             <p>
-                <strong>Recommendation:</strong> Provide migration guide for users currently using PostgreSQL,
-                MySQL, Snowflake, or local file loaders. Consider deprecation warnings before full removal.
+                <strong>Recommendation:</strong> Provide migration guide for users currently using
+                alternative data sources. Consider deprecation warnings before full removal.
             </p>
 
             <h3>2. Removed Functionality</h3>
             <p>Identified these removed features that may impact users:</p>
             <ul>
-                <li>PostgreSQL, MySQL, Snowflake data loaders</li>
-                <li>Local folder data loading</li>
-                <li>Chart gallery and demo datasets</li>
-                <li>Chinese language support</li>
+                <li>Multi-platform data source support</li>
+                <li>Local file system data loading</li>
+                <li>Gallery and demo dataset features</li>
+                <li>Additional language localizations</li>
             </ul>
 
             <h3>3. Documentation Gaps</h3>
             <p>
-                <strong>Issue:</strong> No updated documentation reflecting BigQuery-only architecture.
+                <strong>Issue:</strong> No updated documentation reflecting single-platform architecture.
             </p>
             <p>
                 <strong>Recommendation:</strong> Update README, user guides, and API docs to reflect
-                architectural changes and new Vertex AI capabilities.
+                architectural changes and new AI platform capabilities.
             </p>
         </div>
 
@@ -294,8 +295,8 @@
             <h3>Architecture Impact</h3>
             <ul>
                 <li>Simplified codebase significantly reduces maintenance burden</li>
-                <li>BigQuery-only focus aligns with enterprise GCP adoption</li>
-                <li>Vertex AI integration enables advanced AI/ML capabilities</li>
+                <li>Single-platform focus aligns with enterprise cloud adoption</li>
+                <li>AI integration enables advanced ML capabilities</li>
                 <li>Removal of multi-source complexity improves reliability</li>
             </ul>
         </div>
@@ -326,7 +327,7 @@
                 <li>Security vulnerability identification</li>
                 <li>Impact analysis and risk assessment</li>
                 <li>Technical writing and documentation</li>
-                <li>Understanding enterprise cloud architecture (GCP, BigQuery, Vertex AI)</li>
+                <li>Understanding enterprise cloud architecture and data platforms</li>
             </ul>
         </div>
     </div>

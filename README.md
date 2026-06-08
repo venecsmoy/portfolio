@@ -26,11 +26,11 @@ This is a static portfolio site built with vanilla HTML, CSS, and JavaScript, de
    - Modern card-based layout with collapsible sections
    - Tech: React, TypeScript, Tailwind CSS
 
-2. **Data Formulator Architectural Refactor Review**
+2. **Data Management Tool Architectural Refactor Review**
    - Code review of 10,804-line refactor
-   - BigQuery-only migration analysis
-   - Vertex AI integration assessment
-   - Tech: Python, FastAPI, BigQuery, Vertex AI
+   - Cloud platform migration analysis
+   - AI services integration assessment
+   - Tech: Python, FastAPI, Cloud Data Platforms, AI Integration
 
 3. **Intern Coding Challenge**
    - Designed hands-on refactoring challenge for 2026 cohort
@@ -50,7 +50,7 @@ This is a static portfolio site built with vanilla HTML, CSS, and JavaScript, de
 
 - **Frontend:** React, TypeScript, Tailwind CSS, HTML/CSS, JavaScript
 - **Backend:** Python, FastAPI
-- **Cloud & Data:** Google Cloud Platform, BigQuery, Vertex AI
+- **Cloud & Data:** Cloud Platforms (GCP), Cloud Data Warehousing, AI/ML Services
 - **Tools:** Git, GitHub, Claude Code, VS Code
 
 ## Deployment

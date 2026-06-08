@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Audio Visualizer - Venec Moy</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .project-detail {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+        .project-detail h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        .meta-info {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+        .section-block {
+            margin-bottom: 2.5rem;
+        }
+        .section-block h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-align: left;
+        }
+        .section-block h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        .section-block ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .section-block li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        .highlight-box {
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+        }
+        .wip-badge {
+            display: inline-block;
+            background-color: #f59e0b;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .tech-stack-large {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .tech-tag-large {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Venec Moy</h1>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="project-detail">
+        <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+
+        <h1>
+            Spotify Audio Visualizer Overlay
+            <span class="wip-badge">In Progress</span>
+        </h1>
+        <div class="meta-info">
+            Personal Project | June 2026
+        </div>
+
+        <div class="tech-stack-large">
+            <span class="tech-tag-large">JavaScript</span>
+            <span class="tech-tag-large">Spotify API</span>
+            <span class="tech-tag-large">Canvas</span>
+            <span class="tech-tag-large">Web Audio API</span>
+            <span class="tech-tag-large">HTML/CSS</span>
+        </div>
+
+        <div class="section-block">
+            <h2>Overview</h2>
+            <p>
+                Building an immersive audio visualizer overlay for Spotify that displays real-time
+                audio visualizations while the app is idle in fullscreen mode. The goal is to create
+                a visually engaging experience that enhances the listening experience without
+                interfering with normal app usage.
+            </p>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Motivation:</strong> Create a screensaver-like experience for Spotify during idle
+            periods that visualizes the music in real-time, similar to classic media player visualizers
+            but designed for modern fullscreen usage.
+        </div>
+
+        <div class="section-block">
+            <h2>Planned Features</h2>
+
+            <h3>Core Functionality</h3>
+            <ul>
+                <li><strong>Real-Time Audio Visualization:</strong> Capture and visualize audio frequencies in sync with playback</li>
+                <li><strong>Fullscreen Overlay Mode:</strong> Seamlessly overlay visualizer when Spotify is idle in fullscreen</li>
+                <li><strong>Multiple Visualization Styles:</strong> Different visual patterns (bars, waveforms, particles, etc.)</li>
+                <li><strong>Spotify Integration:</strong> Fetch currently playing track info and album art</li>
+                <li><strong>Idle Detection:</strong> Automatically activate when user is inactive</li>
+                <li><strong>Non-Intrusive:</strong> Dismiss on user interaction without disrupting playback</li>
+            </ul>
+
+            <h3>Visual Elements</h3>
+            <ul>
+                <li>Frequency spectrum analyzer (classic bars)</li>
+                <li>Waveform visualization</li>
+                <li>Particle system reacting to audio</li>
+                <li>Album art integration with color extraction</li>
+                <li>Track metadata display (title, artist, album)</li>
+                <li>Smooth transitions between visualization modes</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Technical Approach</h2>
+
+            <h3>Spotify API Integration</h3>
+            <ul>
+                <li>OAuth authentication for user access</li>
+                <li>Web Playback SDK for audio stream access</li>
+                <li>Currently Playing endpoint for track metadata</li>
+                <li>Real-time playback state monitoring</li>
+            </ul>
+
+            <h3>Audio Processing</h3>
+            <ul>
+                <li><strong>Web Audio API:</strong> Analyze audio frequencies in real-time</li>
+                <li><strong>AnalyserNode:</strong> Extract frequency and time-domain data</li>
+                <li><strong>FFT Processing:</strong> Fast Fourier Transform for frequency analysis</li>
+                <li><strong>Audio Context:</strong> Connect Spotify playback to analyzer</li>
+            </ul>
+
+            <h3>Visualization Rendering</h3>
+            <ul>
+                <li><strong>HTML Canvas:</strong> High-performance 2D rendering</li>
+                <li><strong>RequestAnimationFrame:</strong> Smooth 60fps animations</li>
+                <li><strong>Dynamic Scaling:</strong> Responsive to different screen sizes</li>
+                <li><strong>Color Theming:</strong> Extract colors from album art for cohesive visuals</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Design Challenges</h2>
+
+            <h3>1. Audio Stream Access</h3>
+            <p>
+                <strong>Challenge:</strong> Accessing Spotify's audio stream for real-time analysis
+                while respecting API limitations and DRM.
+            </p>
+            <p>
+                <strong>Approach:</strong> Utilize Web Playback SDK and Web Audio API to capture
+                audio context without violating terms of service.
+            </p>
+
+            <h3>2. Fullscreen Overlay Implementation</h3>
+            <p>
+                <strong>Challenge:</strong> Creating an overlay that works in fullscreen mode without
+                conflicting with Spotify's UI.
+            </p>
+            <p>
+                <strong>Approach:</strong> Browser extension or standalone web app with Spotify
+                integration, detecting idle state and activating overlay.
+            </p>
+
+            <h3>3. Performance Optimization</h3>
+            <p>
+                <strong>Challenge:</strong> Maintaining 60fps visualization without impacting audio
+                playback or system performance.
+            </p>
+            <p>
+                <strong>Approach:</strong> Efficient Canvas rendering, requestAnimationFrame,
+                and optimized FFT processing with appropriate buffer sizes.
+            </p>
+        </div>
+
+        <div class="section-block">
+            <h2>Current Status</h2>
+
+            <h3>In Development</h3>
+            <ul>
+                <li>Spotify API authentication setup</li>
+                <li>Web Audio API integration and audio analysis</li>
+                <li>Basic frequency spectrum visualizer prototype</li>
+                <li>Canvas rendering pipeline</li>
+            </ul>
+
+            <h3>Planned Next Steps</h3>
+            <ul>
+                <li>Implement idle detection logic</li>
+                <li>Add multiple visualization modes</li>
+                <li>Integrate album art color extraction</li>
+                <li>Build fullscreen overlay mechanism</li>
+                <li>Add user configuration options (sensitivity, colors, modes)</li>
+                <li>Test performance across different systems</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Learning Goals</h2>
+            <ul>
+                <li>Master Web Audio API for audio analysis and processing</li>
+                <li>Deepen Canvas API knowledge for high-performance rendering</li>
+                <li>Learn Spotify API integration and OAuth flows</li>
+                <li>Optimize JavaScript performance for real-time graphics</li>
+                <li>Understand audio frequency analysis and FFT algorithms</li>
+                <li>Practice building immersive user experiences</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Technologies Explored:</strong> This project provides hands-on experience with
+            browser APIs (Web Audio, Canvas), real-time data processing, performance optimization,
+            and creative coding—expanding skills beyond traditional web development.
+        </div>
+
+        <div class="section-block">
+            <h2>Potential Features</h2>
+            <ul>
+                <li>Customizable color schemes and themes</li>
+                <li>Beat detection for reactive animations</li>
+                <li>Configurable idle timeout duration</li>
+                <li>Multiple visualization presets</li>
+                <li>Keyboard shortcuts for mode switching</li>
+                <li>Genre-specific visualization styles</li>
+                <li>Save/export visualizations as video</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Venec Moy. Built with HTML, CSS, and dedication.</p>
+        </div>
+    </footer>
+</body>
+</html>

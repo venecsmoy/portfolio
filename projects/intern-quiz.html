@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intern Coding Challenge - Venec Moy</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .project-detail {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+        .project-detail h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        .meta-info {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+        .section-block {
+            margin-bottom: 2.5rem;
+        }
+        .section-block h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-align: left;
+        }
+        .section-block h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        .section-block ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .section-block li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        .highlight-box {
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+        }
+        .tech-stack-large {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .tech-tag-large {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .workflow-steps {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--card-shadow);
+            margin: 1.5rem 0;
+        }
+        .workflow-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .workflow-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-color);
+        }
+        .step-content p {
+            margin: 0;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Venec Moy</h1>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="project-detail">
+        <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+
+        <h1>WellSky Intern Coding Challenge</h1>
+        <div class="meta-info">
+            WellSky | June 2026 | Audience: 2026 Intern Cohort
+        </div>
+
+        <div class="tech-stack-large">
+            <span class="tech-tag-large">Python</span>
+            <span class="tech-tag-large">Testing</span>
+            <span class="tech-tag-large">TDD</span>
+            <span class="tech-tag-large">Technical Writing</span>
+            <span class="tech-tag-large">Curriculum Design</span>
+        </div>
+
+        <div class="section-block">
+            <h2>Overview</h2>
+            <p>
+                Designed and developed a hands-on coding challenge for the 2026 WellSky intern cohort,
+                focusing on real-world refactoring skills, test-driven development, and professional
+                workflow practices. The challenge provides interns with a realistic engineering scenario
+                before working on production systems.
+            </p>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Purpose:</strong> Give new interns practical experience with refactoring messy code,
+            writing tests, and following professional software development workflows using the same tools
+            and processes used in production.
+        </div>
+
+        <div class="section-block">
+            <h2>Challenge Design</h2>
+
+            <h3>The Scenario</h3>
+            <p>
+                Interns inherit a working but messy payroll processor and must refactor it—cleaning it up,
+                making it testable, and fixing any bugs—without changing its behavior. This mirrors
+                real-world scenarios where engineers must improve legacy code while maintaining functionality.
+            </p>
+
+            <h3>Core Requirements</h3>
+            <ul>
+                <li>Refactor code across five interconnected payroll processing files</li>
+                <li>Write comprehensive test suite (minimum 10 tests) covering all business rules</li>
+                <li>Follow Research → Plan → Implement → Validate workflow</li>
+                <li>Use WellSky Claude Code Plugins to structure work</li>
+                <li>Submit single PR with refactored code, tests, and detailed write-up</li>
+            </ul>
+        </div>
+
+        <div class="workflow-steps">
+            <h3 style="margin-top: 0;">Required Workflow</h3>
+
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Research</h4>
+                    <p>Understand existing code, identify issues, and document business rules before making any changes</p>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Plan</h4>
+                    <p>Create detailed implementation plan outlining refactoring approach and test strategy</p>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Implement</h4>
+                    <p>Write tests first (TDD), then refactor code while ensuring all tests pass</p>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Validate</h4>
+                    <p>Verify behavior unchanged, all tests pass, and code quality improved</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <h2>Technical Components</h2>
+
+            <h3>Payroll Processing System</h3>
+            <p>The challenge includes five interconnected Python modules:</p>
+            <ul>
+                <li><strong>Employee Data:</strong> Employee information and tax withholding</li>
+                <li><strong>Time Tracking:</strong> Hours worked, overtime calculations</li>
+                <li><strong>Deductions:</strong> Benefits, retirement, taxes</li>
+                <li><strong>Payment Processing:</strong> Net pay calculation and check generation</li>
+                <li><strong>Main Orchestrator:</strong> Coordinates the entire payroll run</li>
+            </ul>
+
+            <h3>Testing Requirements</h3>
+            <ul>
+                <li>Minimum 10 tests covering all business rules</li>
+                <li>Tests must be written before refactoring (TDD approach)</li>
+                <li>Edge cases and error handling must be tested</li>
+                <li>All tests must pass before PR submission</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Documentation & Support</h2>
+
+            <h3>Challenge Documentation</h3>
+            <ul>
+                <li><strong>README.md:</strong> Quick start guide and overview</li>
+                <li><strong>challenge.md:</strong> Full challenge brief with detailed requirements</li>
+                <li><strong>PR Template:</strong> Structured format for explaining changes</li>
+                <li><strong>Workflow Guide:</strong> Step-by-step process using Claude Code plugins</li>
+            </ul>
+
+            <h3>Key Learning Objectives</h3>
+            <ul>
+                <li>Test-Driven Development (TDD) practices</li>
+                <li>Refactoring without changing behavior</li>
+                <li>Writing clear, maintainable code</li>
+                <li>Following structured development workflows</li>
+                <li>Technical writing and documentation</li>
+                <li>Using professional development tools (Git, GitHub, Claude Code)</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Deliverable Structure</h2>
+
+            <h3>What Interns Submit</h3>
+            <ul>
+                <li><strong>Code:</strong> Refactored payroll processor with improved structure</li>
+                <li><strong>Tests:</strong> Comprehensive test suite (10+ tests)</li>
+                <li><strong>PR Description:</strong> Detailed explanation of:
+                    <ul>
+                        <li>What issues were found in original code</li>
+                        <li>What changes were made and why</li>
+                        <li>How testing validates the refactor</li>
+                        <li>Any trade-offs or design decisions</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Impact & Design Philosophy</h2>
+
+            <h3>Real-World Preparation</h3>
+            <p>
+                The challenge intentionally mirrors real engineering work at WellSky: inheriting code,
+                improving quality, and documenting decisions. It emphasizes that the write-up matters
+                as much as the code—communication is crucial in professional settings.
+            </p>
+
+            <h3>Tool Familiarization</h3>
+            <p>
+                By requiring the WellSky Claude Code Plugins and structured workflow, interns gain
+                hands-on experience with the same tools they'll use on production projects.
+            </p>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Key Learnings:</strong> Gained experience in technical curriculum design, creating
+            realistic coding challenges, and structuring learning experiences that prepare interns for
+            production engineering work. Learned to balance challenge difficulty with educational value.
+        </div>
+
+        <div class="section-block">
+            <h2>Skills Demonstrated</h2>
+            <ul>
+                <li>Technical curriculum design</li>
+                <li>Educational content creation</li>
+                <li>Technical writing and documentation</li>
+                <li>Understanding of software engineering best practices</li>
+                <li>Test-driven development expertise</li>
+                <li>Workflow design and process documentation</li>
+                <li>Mentorship and knowledge transfer</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Venec Moy. Built with HTML, CSS, and dedication.</p>
+        </div>
+    </footer>
+</body>
+</html>

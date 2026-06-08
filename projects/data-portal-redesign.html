@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Data Portal Redesign - Venec Moy</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .project-detail {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+        .project-detail h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        .meta-info {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+        .section-block {
+            margin-bottom: 2.5rem;
+        }
+        .section-block h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-align: left;
+        }
+        .section-block h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        .section-block ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .section-block li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        .highlight-box {
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+        }
+        .tech-stack-large {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .tech-tag-large {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Venec Moy</h1>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="project-detail">
+        <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+
+        <h1>Corporate Data Management Portal Redesign</h1>
+        <div class="meta-info">
+            WellSky | May 2026 - June 2026 | Ticket: WIR-713, WIR-721, WIR-720
+        </div>
+
+        <div class="tech-stack-large">
+            <span class="tech-tag-large">React</span>
+            <span class="tech-tag-large">TypeScript</span>
+            <span class="tech-tag-large">Tailwind CSS</span>
+            <span class="tech-tag-large">UI/UX Design</span>
+            <span class="tech-tag-large">Design Systems</span>
+        </div>
+
+        <div class="section-block">
+            <h2>Overview</h2>
+            <p>
+                Led a comprehensive UI/UX redesign of the WellSky Corporate Data Management Portal, transforming
+                the data exploration experience through modern design patterns, organizational categorization,
+                and full brand integration. This project significantly improved data discoverability and user
+                engagement while establishing a scalable design system.
+            </p>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Impact:</strong> Redesigned the primary data discovery interface used by internal teams
+            to explore datasets and tables, implementing filtering capabilities that reduced time-to-find for
+            specific datasets.
+        </div>
+
+        <div class="section-block">
+            <h2>Key Achievements</h2>
+
+            <h3>🎨 WellSky Brand Integration</h3>
+            <ul>
+                <li>Implemented complete design system with WellSky colors, typography, and spacing tokens</li>
+                <li>Integrated official Roboto font family (14 font variants) for brand consistency</li>
+                <li>Added WellSky logos (color, black, white variants) and brand graphics</li>
+                <li>Created reusable branded UI components (Button, Card, Layout, Logo)</li>
+                <li>Applied brand-consistent color scheme throughout the application</li>
+            </ul>
+
+            <h3>🏷️ Organizational Tag & Filter System</h3>
+            <ul>
+                <li>Designed and implemented dataset categorization by organizational tags (Engineering, Product, InfoSec, etc.)</li>
+                <li>Built multi-select tag filtering interface for the Explore page</li>
+                <li>Created visual tag badges with distinct colors for easy identification</li>
+                <li>Enabled simultaneous filtering by dataset name, description, and organizational tags</li>
+                <li>Added "All Categories" view to surface uncategorized datasets</li>
+            </ul>
+
+            <h3>📊 Enhanced Data Exploration UI</h3>
+            <ul>
+                <li><strong>Collapsible Sections:</strong> Implemented expandable/collapsible cards with smooth animations</li>
+                <li><strong>Progressive Disclosure:</strong> Users can expand individual datasets to view their tables on-demand</li>
+                <li><strong>Improved Layout:</strong> Redesigned Explore page with better spacing and visual hierarchy</li>
+                <li><strong>Loading States:</strong> Added loading bar component for better user feedback during data fetches</li>
+                <li><strong>Table Count Indicators:</strong> Display number of tables per dataset in collapsed view</li>
+            </ul>
+
+            <h3>🎯 UI/UX Improvements</h3>
+            <ul>
+                <li>Replaced list view with modern card-based layout for better information density</li>
+                <li>Applied consistent spacing and padding using design tokens</li>
+                <li>Implemented hover states and visual feedback on all interactive elements</li>
+                <li>Ensured responsive design for mobile and desktop experiences</li>
+                <li>Improved typography hierarchy using WellSky brand fonts</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Technical Implementation</h2>
+
+            <h3>Frontend Architecture</h3>
+            <ul>
+                <li>Built with React and TypeScript for type safety and maintainability</li>
+                <li>Utilized Tailwind CSS for rapid UI development with design tokens</li>
+                <li>Implemented component-based architecture with reusable UI elements</li>
+                <li>Ensured backward compatibility with existing API integrations</li>
+            </ul>
+
+            <h3>Testing & Validation</h3>
+            <ul>
+                <li>Verified organizational tag filtering functionality across edge cases</li>
+                <li>Tested collapsible dataset cards for smooth animations and state management</li>
+                <li>Validated multi-tag selection filters datasets appropriately</li>
+                <li>Confirmed WellSky brand colors and fonts render correctly across browsers</li>
+                <li>Tested responsive layout on multiple screen sizes and devices</li>
+                <li>Verified all dataset and table navigation maintained functionality</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <h2>Challenges & Solutions</h2>
+
+            <h3>Challenge: Brand Consistency</h3>
+            <p>
+                Needed to integrate WellSky branding while maintaining existing functionality and not breaking
+                the user workflow.
+            </p>
+            <p>
+                <strong>Solution:</strong> Created a modular design system with reusable components that could
+                be incrementally rolled out, ensuring each component was tested in isolation before integration.
+            </p>
+
+            <h3>Challenge: Performance with Large Datasets</h3>
+            <p>
+                Collapsible cards with hundreds of datasets needed to remain performant.
+            </p>
+            <p>
+                <strong>Solution:</strong> Implemented progressive disclosure pattern where only expanded datasets
+                load their table details, reducing initial render time and memory usage.
+            </p>
+        </div>
+
+        <div class="section-block">
+            <h2>Results & Impact</h2>
+            <ul>
+                <li>Successfully delivered all three tickets (WIR-713, WIR-721, WIR-720) within timeline</li>
+                <li>Improved user experience with modern, intuitive interface</li>
+                <li>Established reusable design system for future portal enhancements</li>
+                <li>No breaking changes to existing API or backend infrastructure</li>
+                <li>Zero new external dependencies added</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Key Learnings:</strong> Gained hands-on experience with enterprise-level UI/UX design,
+            design systems, and the importance of maintaining backward compatibility while innovating on user experience.
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Venec Moy. Built with HTML, CSS, and dedication.</p>
+        </div>
+    </footer>
+</body>
+</html>

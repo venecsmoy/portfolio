@@ -11,8 +11,8 @@ This is a static portfolio site built with vanilla HTML, CSS, and JavaScript, de
 - `index.html` - Main landing page with overview of experience, projects, and skills
 - `styles.css` - All styling for the site
 - `projects/` - Detailed project pages
-  - `data-portal-redesign.html` - WellSky Corporate Data Portal UI redesign
-  - `data-formulator-review.html` - Code review of architectural refactor
+  - `data-portal-redesign.html` - Enterprise data portal UI redesign
+  - `data-formulator-review.html` - Backend architecture refactor review
   - `intern-quiz.html` - Intern coding challenge design
   - `spotify-visualizer.html` - Personal project: Spotify audio visualizer
 
@@ -20,13 +20,13 @@ This is a static portfolio site built with vanilla HTML, CSS, and JavaScript, de
 
 ### WellSky Internship (May 2026 - Present)
 
-1. **Corporate Data Management Portal Redesign**
-   - Comprehensive UI/UX redesign with WellSky branding
+1. **Enterprise Data Portal UI Redesign**
+   - Comprehensive UI/UX redesign with corporate branding
    - Organizational tag filtering system
    - Modern card-based layout with collapsible sections
    - Tech: React, TypeScript, Tailwind CSS
 
-2. **Data Management Tool Architectural Refactor Review**
+2. **Backend Architecture Refactor Review**
    - Code review of 10,804-line refactor
    - Cloud platform migration analysis
    - AI services integration assessment

@@ -157,9 +157,9 @@
 
             <h3>Core Functionality</h3>
             <ul>
-                <li><strong>Transparent Overlay:</strong> Full-width window at top of screen (150px height) with transparent background</li>
+                <li><strong>Transparent Overlay:</strong> Full-width window at top of screen (250px height) with transparent background</li>
                 <li><strong>Real-Time Audio Capture:</strong> Uses VB-Audio Virtual Cable to capture system audio</li>
-                <li><strong>Frequency Spectrum Analysis:</strong> FFT-based frequency analysis with 300 wave points</li>
+                <li><strong>Frequency Spectrum Analysis:</strong> FFT-based frequency analysis with 200 wave points</li>
                 <li><strong>RMS-Based Silence Detection:</strong> Automatically fades to flat line when music is paused</li>
                 <li><strong>Smooth Wave Rendering:</strong> 60 FPS animation with Bezier curve smoothing</li>
                 <li><strong>Always-on-Top Mode:</strong> Overlay stays visible over all applications including fullscreen</li>
@@ -169,8 +169,8 @@
             <ul>
                 <li><strong>FFT Analysis:</strong> Fast Fourier Transform on 2048-sample chunks at 44.1kHz</li>
                 <li><strong>Frequency Mapping:</strong> Bass (left) → Mids (center) → Vocals/Highs (right)</li>
-                <li><strong>Bass Boost:</strong> 30% amplitude boost for low frequencies (first 30% of spectrum)</li>
-                <li><strong>Adaptive Smoothing:</strong> 70% retention for natural motion, 85% during silence</li>
+                <li><strong>Band-Specific Boosts:</strong> 2.3x bass, 2.15x mids, 2.5x highs to balance perceived loudness across the spectrum</li>
+                <li><strong>Adaptive Smoothing:</strong> Per-band prior-frame retention (0.90 bass / 0.80 mids / 0.75 highs); 0.85 decay during silence</li>
                 <li><strong>Normalization:</strong> Dynamic range compression for balanced visualization</li>
             </ul>
 
@@ -213,16 +213,16 @@ else:
             <h3>Frequency Distribution</h3>
             <ul>
                 <li><strong>Spectrum Range:</strong> 0 Hz to 8.8 kHz (40% of FFT output)</li>
-                <li><strong>Left 30%:</strong> Bass & kick drums (20-300 Hz) with 1.3x boost</li>
-                <li><strong>Middle 40%:</strong> Vocals & instruments (300-2000 Hz)</li>
-                <li><strong>Right 30%:</strong> Hi-hats, cymbals, vocal harmonics (2-8 kHz)</li>
+                <li><strong>Left 40%:</strong> Bass & kick drums (20-300 Hz) with 2.3x boost</li>
+                <li><strong>Middle 40%:</strong> Vocals & instruments (300-2000 Hz) with 2.15x boost</li>
+                <li><strong>Right 20%:</strong> Hi-hats, cymbals, vocal harmonics (2-8 kHz) with 2.5x boost</li>
             </ul>
 
             <h3>Performance Optimizations</h3>
             <ul>
                 <li>Efficient NumPy operations for FFT processing</li>
                 <li>Audio queue system to prevent blocking</li>
-                <li>Smooth Bezier curves with splinesteps=12</li>
+                <li>Smooth Bezier curves with splinesteps=6</li>
                 <li>16ms update interval (62.5 FPS target)</li>
                 <li>Minimal memory footprint (~50MB RAM)</li>
             </ul>

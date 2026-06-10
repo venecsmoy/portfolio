@@ -170,7 +170,8 @@
                 <li><strong>FFT Analysis:</strong> Fast Fourier Transform on 2048-sample chunks at 44.1kHz</li>
                 <li><strong>Frequency Mapping:</strong> Bass (left) → Mids (center) → Vocals/Highs (right)</li>
                 <li><strong>Band-Specific Boosts:</strong> 2.3x bass, 2.15x mids, 2.5x highs to balance perceived loudness across the spectrum</li>
-                <li><strong>Adaptive Smoothing:</strong> Per-band prior-frame retention (0.90 bass / 0.80 mids / 0.75 highs); 0.85 decay during silence</li>
+                <li><strong>Spring-Damper Motion:</strong> Each point chases its FFT target with momentum; per-band tuning (slow heavy bass, snappy highs) creates organic sway on transients and a natural settle on sustained notes</li>
+                <li><strong>Spatial Coupling:</strong> Adjacent wave points pull on each other via a [0.25, 0.5, 0.25] convolution each frame so the wave moves as a connected sheet rather than independent bars</li>
                 <li><strong>Normalization:</strong> Dynamic range compression for balanced visualization</li>
             </ul>
 
@@ -196,18 +197,20 @@ CABLE Output (virtual microphone) → Visualizer (FFT Analysis)
 Listen Mode → Real Headphones/Speakers
             </div>
 
-            <h3>Silence Detection Algorithm</h3>
-            <p>Uses RMS (Root Mean Square) for accurate silence detection:</p>
+            <h3>Silence Detection &amp; Motion Model</h3>
+            <p>Uses RMS (Root Mean Square) for accurate silence detection. The motion model unifies both paths — a per-band spring-damper drives every point toward a target, which is either the FFT result (music) or zero (silence). Adjacent points are coupled each frame so the wave moves as a connected sheet:</p>
             <div class="code-block">
 rms = sqrt(mean(audio_data²))
 
-if rms < 0.001:
-    # Fade to flat (85% decay per frame)
-    wave_data *= 0.85
-else:
-    # Perform FFT and visualize
-    fft_magnitude = abs(fft(audio_data))
-    normalize and render...
+# Target: zeros when silent, FFT-derived bands otherwise
+target = zeros if rms < 0.001 else fft_bands(audio_data)
+
+# Spring-damper per point (per-band spring_k / damping)
+velocity = velocity * damping + (target - position) * spring_k
+position += velocity
+
+# Spatial coupling: neighbors pull on each other
+position = convolve(position, [0.25, 0.5, 0.25])
             </div>
 
             <h3>Frequency Distribution</h3>
@@ -238,8 +241,8 @@ else:
             </p>
             <p>
                 <strong>Solution:</strong> Implemented RMS-based silence detection (threshold: 0.001). When below
-                threshold, apply 85% decay instead of FFT visualization. This prevents noise amplification while
-                maintaining smooth fade-to-flat behavior.
+                threshold, the spring-damper target is set to zero so the wave naturally decays to a flat line
+                without re-amplifying noise — the same physics path handles both states uniformly.
             </p>
 
             <h3>2. Frequency Distribution Across Full Screen</h3>

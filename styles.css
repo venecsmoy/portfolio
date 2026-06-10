@@ -19,6 +19,59 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated Wave Backdrop */
+.wave-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+.wave-backdrop::before,
+.wave-backdrop::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: wave 20s linear infinite;
+}
+
+.wave-backdrop::after {
+    animation: wave 25s linear infinite reverse;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0deg) translate(-10%, -10%);
+    }
+    100% {
+        transform: rotate(360deg) translate(-10%, -10%);
+    }
 }
 
 .container {
@@ -29,7 +82,8 @@ body {
 
 /* Navbar */
 .navbar {
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     box-shadow: var(--card-shadow);
     position: sticky;
     top: 0;
@@ -94,6 +148,7 @@ body {
 /* Sections */
 .section {
     padding: 4rem 0;
+    position: relative;
 }
 
 .section h2 {
@@ -104,7 +159,8 @@ body {
 }
 
 .bg-light {
-    background-color: var(--bg-light);
+    background-color: rgba(249, 250, 251, 0.7);
+    backdrop-filter: blur(10px);
 }
 
 /* Timeline */
@@ -181,7 +237,8 @@ body {
 }
 
 .project-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
     border-radius: 0.5rem;
     padding: 1.5rem;
     box-shadow: var(--card-shadow);
@@ -275,7 +332,8 @@ body {
 }
 
 .skill-category {
-    background: white;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
     padding: 1.5rem;
     border-radius: 0.5rem;
     box-shadow: var(--card-shadow);
@@ -326,7 +384,8 @@ body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
     padding: 1rem 2rem;
     border-radius: 0.5rem;
     text-decoration: none;
@@ -351,6 +410,141 @@ body {
 
 .social-link:hover .social-icon {
     transform: scale(1.1);
+}
+
+/* Expandable Project Details */
+.project-toggle {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.project-toggle:hover {
+    background-color: var(--secondary-color);
+}
+
+.project-details {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.detail-section {
+    margin-bottom: 2rem;
+}
+
+.detail-section h4 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.detail-section h5 {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.detail-section p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.detail-section ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.detail-section li {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.detail-section ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.detail-section code {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.detail-section a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.detail-section a:hover {
+    text-decoration: underline;
+}
+
+.highlight-note {
+    background-color: #dbeafe;
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.25rem;
+}
+
+.code-snippet {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+}
+
+.challenge-item {
+    background-color: var(--bg-light);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.github-link-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.github-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #24292e;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.github-link-btn:hover {
+    background-color: #1b1f23;
 }
 
 /* Footer */

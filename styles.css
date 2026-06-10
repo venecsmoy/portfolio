@@ -236,6 +236,13 @@ body {
     margin-bottom: 2rem;
 }
 
+.projects-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
 .project-card {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);

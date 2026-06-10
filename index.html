@@ -140,9 +140,9 @@
 
             <!-- Personal Projects -->
             <h3 class="project-category-title">Personal Projects</h3>
-            <div class="projects-grid">
+            <div class="projects-grid-compact">
 
-                <div class="project-card-full">
+                <div class="project-card">
                     <div class="project-header">
                         <div class="project-title-with-logo">
                             <img src="images/logos/spotify-logo.svg" alt="Spotify" class="project-logo">
@@ -150,7 +150,11 @@
                         </div>
                         <span class="project-tag">Personal</span>
                     </div>
-
+                    <p class="project-description">
+                        Real-time audio visualizer overlay for Spotify with 50% transparent wave animations.
+                        Features custom frequency band distribution (40/40/20 split), moving average filters for smooth bass,
+                        VB-Audio Virtual Cable integration, and 60 FPS rendering with NumPy optimization.
+                    </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">NumPy</span>
@@ -158,159 +162,7 @@
                         <span class="tech-tag">sounddevice</span>
                         <span class="tech-tag">FFT</span>
                     </div>
-
-                    <div class="project-full-details">
-                        <div class="detail-section">
-                            <h4>Overview</h4>
-                            <p>
-                                A real-time audio visualizer that creates a transparent overlay at the top of your screen,
-                                displaying smooth waveform visualizations synchronized with Spotify (or any audio) playback. The visualizer
-                                uses FFT (Fast Fourier Transform) to analyze audio frequencies and renders them as flowing
-                                waves across the screen width, with bass frequencies on the left and vocals/highs on the right.
-                            </p>
-                            <div class="highlight-note">
-                                <strong>Key Achievement:</strong> Built a production-ready desktop audio visualizer with
-                                RMS-based silence detection, frequency-mapped visualization, and VB-CABLE integration for
-                                system-wide audio capture—all running at 60 FPS with minimal CPU overhead.
-                            </div>
-                        </div>
-
-                        <div class="detail-section">
-                            <h4>Features</h4>
-                            <ul>
-                                <li><strong>Transparent Overlay:</strong> Full-width window at top of screen with transparent background</li>
-                                <li><strong>Real-Time FFT Analysis:</strong> Fast Fourier Transform visualization of audio frequencies</li>
-                                <li><strong>Frequency-Mapped Waves:</strong> Bass on left, vocals/mids in center, highs on right</li>
-                                <li><strong>Smart Silence Detection:</strong> RMS-based detection that fades to flat when music is paused</li>
-                                <li><strong>Smooth 60 FPS Animation:</strong> Bezier curve smoothing for fluid motion</li>
-                                <li><strong>VB-CABLE Integration:</strong> Captures system-wide audio via virtual audio cable</li>
-                                <li><strong>Always-on-Top:</strong> Stays visible over all applications including fullscreen</li>
-                            </ul>
-                        </div>
-
-                        <div class="detail-section">
-                            <h4>Installation</h4>
-                            <h5>Prerequisites</h5>
-                            <ul>
-                                <li><strong>Python 3.8+</strong> with pip</li>
-                                <li><strong>VB-Audio Virtual Cable</strong> - <a href="https://vb-audio.com/Cable/" target="_blank" style="color: var(--primary-color);">Download here</a></li>
-                            </ul>
-
-                            <h5>Install Dependencies</h5>
-                            <pre class="code-snippet">pip install -r requirements.txt</pre>
-                        </div>
-
-                        <div class="detail-section">
-                            <h4>Setup</h4>
-                            <h5>1. Install VB-Audio Virtual Cable</h5>
-                            <ol>
-                                <li>Download from <a href="https://vb-audio.com/Cable/" target="_blank" style="color: var(--primary-color);">https://vb-audio.com/Cable/</a></li>
-                                <li>Extract and run <code>VBCABLE_Setup_x64.exe</code> as Administrator</li>
-                                <li>Click "Install Driver"</li>
-                                <li><strong>Restart your computer</strong> (required!)</li>
-                            </ol>
-
-                            <h5>2. Configure Windows Audio</h5>
-                            <p><strong>Playback Tab:</strong></p>
-                            <ol>
-                                <li>Right-click speaker icon → "Open Sound settings"</li>
-                                <li>Click "Sound Control Panel"</li>
-                                <li>Right-click <strong>"CABLE Input"</strong> → <strong>"Set as Default Device"</strong></li>
-                                <li>Click "Apply"</li>
-                            </ol>
-
-                            <p><strong>Recording Tab:</strong></p>
-                            <ol>
-                                <li>Right-click <strong>"CABLE Output"</strong> → <strong>"Properties"</strong></li>
-                                <li>Go to <strong>"Listen"</strong> tab</li>
-                                <li>Check <strong>"Listen to this device"</strong></li>
-                                <li>Select your real headphones/speakers from dropdown</li>
-                                <li>Click "Apply" → "OK"</li>
-                            </ol>
-
-                            <p style="margin-top: 1rem;">Now Spotify audio will play through the virtual cable (captured by visualizer) and route back to your headphones (so you can hear it).</p>
-                        </div>
-
-                        <div class="detail-section">
-                            <h4>Usage</h4>
-                            <pre class="code-snippet">python visualizer.py</pre>
-                            <p><strong>Controls:</strong></p>
-                            <ul>
-                                <li><strong>ESC</strong> - Close visualizer</li>
-                            </ul>
-                        </div>
-
-                        <div class="detail-section">
-                            <h4>How It Works</h4>
-                            <h5>Audio Pipeline</h5>
-                            <pre class="code-snippet">Spotify → CABLE Input (virtual speaker)
-    ↓
-CABLE Output (virtual microphone) → Visualizer (FFT)
-    ↓
-Listen Mode → Your Headphones</pre>
-
-                            <h5>Technical Details</h5>
-                            <ul>
-                                <li><strong>Sample Rate:</strong> 44.1 kHz</li>
-                                <li><strong>Chunk Size:</strong> 2048 samples</li>
-                                <li><strong>Wave Points:</strong> 300 frequency bands</li>
-                                <li><strong>Update Rate:</strong> ~60 FPS (16ms intervals)</li>
-                                <li><strong>Frequency Range:</strong> 0 Hz - 8.8 kHz (40% of FFT spectrum)</li>
-                                <li><strong>Silence Threshold:</strong> RMS < 0.001</li>
-                            </ul>
-
-                            <h5>Frequency Distribution</h5>
-                            <ul>
-                                <li><strong>Left 30%:</strong> Bass & kick drums (20-300 Hz) - 1.3x boost</li>
-                                <li><strong>Middle 40%:</strong> Vocals & instruments (300-2000 Hz)</li>
-                                <li><strong>Right 30%:</strong> Hi-hats, cymbals (2-8 kHz)</li>
-                            </ul>
-                        </div>
-
-                        <div class="detail-section">
-                            <h4>Troubleshooting</h4>
-                            <div class="challenge-item">
-                                <strong>No audio in headphones:</strong>
-                                <ul style="margin-top: 0.5rem;">
-                                    <li>Make sure "Listen to this device" is enabled on CABLE Output</li>
-                                    <li>Check that the dropdown is set to your real headphones</li>
-                                </ul>
-                            </div>
-                            <div class="challenge-item">
-                                <strong>Visualizer not reacting:</strong>
-                                <ul style="margin-top: 0.5rem;">
-                                    <li>Verify CABLE Output is enabled in Recording devices</li>
-                                    <li>Make sure Spotify is set to play through CABLE Input</li>
-                                    <li>Check that music is actually playing</li>
-                                </ul>
-                            </div>
-                            <div class="challenge-item">
-                                <strong>Want to go back to normal audio:</strong>
-                                <ul style="margin-top: 0.5rem;">
-                                    <li>Sound settings → Playback → Set your headphones as default again</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="detail-section">
-                            <h4>Technical Stack</h4>
-                            <ul>
-                                <li><strong>Python 3.8+</strong></li>
-                                <li><strong>Tkinter</strong> - Transparent overlay window</li>
-                                <li><strong>SoundDevice</strong> - Audio capture</li>
-                                <li><strong>NumPy</strong> - FFT and array operations</li>
-                            </ul>
-                        </div>
-
-                        <div class="github-link-section">
-                            <a href="https://github.com/venecsmoy/spotify-wave-visualizer" target="_blank" class="github-link-btn">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                                View Full Code on GitHub
-                            </a>
-                        </div>
-                    </div>
+                    <a href="projects/spotify-visualizer.html" class="project-link">View Details →</a>
                 </div>
 
             </div>

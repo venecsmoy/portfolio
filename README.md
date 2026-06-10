@@ -2,49 +2,69 @@
 
 A personal portfolio website showcasing my software engineering work and projects.
 
+🌐 **Live Site:** https://venecsmoy.github.io/portfolio/
+
+---
+
+## 🚀 Deploy to GitHub Pages
+
+This portfolio is designed for **easy deployment** to GitHub Pages. Follow these steps:
+
+### Step 1: Push Your Code to GitHub
+
+```bash
+git add .
+git commit -m "Update portfolio"
+git push origin main
+```
+
+### Step 2: Enable GitHub Pages
+
+1. Go to your repository on GitHub: `https://github.com/venecsmoy/portfolio`
+2. Click **Settings** (top navigation bar)
+3. Scroll down to **Pages** (left sidebar under "Code and automation")
+4. Under **Source**, select:
+   - **Branch:** `main`
+   - **Folder:** `/ (root)`
+5. Click **Save**
+
+### Step 3: Access Your Live Site
+
+Your portfolio will be live at: **https://venecsmoy.github.io/portfolio/**
+
+⏱️ *Note: It may take 1-2 minutes for changes to appear after pushing.*
+
+---
+
 ## About
 
 This is a static portfolio site built with vanilla HTML, CSS, and JavaScript, designed to be hosted on GitHub Pages.
 
+### Features
+- 🌊 Animated gradient wave backdrop
+- 🎨 Glassmorphism design with semi-transparent cards
+- 📱 Fully responsive layout
+- ⚡ Fast loading - no build process required
+- 🎯 Expandable project details with complete documentation
+
 ## Structure
 
 - `index.html` - Main landing page with overview of experience, projects, and skills
-- `styles.css` - All styling for the site
-- `projects/` - Detailed project pages
-  - `data-portal-redesign.html` - Enterprise data portal UI redesign
-  - `data-formulator-review.html` - Backend architecture refactor review
-  - `intern-quiz.html` - Intern coding challenge design
-  - `spotify-visualizer.html` - Personal project: Spotify audio visualizer
+- `styles.css` - All styling including animated wave backdrop and glassmorphism effects
+- `projects/` - Detailed project pages (legacy - details now embedded in main page)
+- `images/` - Project logos and assets
 
 ## Projects Featured
 
-### WellSky Internship (May 2026 - Present)
-
-1. **Enterprise Data Portal UI Redesign**
-   - Comprehensive UI/UX redesign with corporate branding
-   - Organizational tag filtering system
-   - Modern card-based layout with collapsible sections
-   - Tech: React, TypeScript, Tailwind CSS
-
-2. **Backend Architecture Refactor Review**
-   - Code review of 10,804-line refactor
-   - Cloud platform migration analysis
-   - AI services integration assessment
-   - Tech: Python, FastAPI, Cloud Data Platforms, AI Integration
-
-3. **Intern Coding Challenge**
-   - Designed hands-on refactoring challenge for 2026 cohort
-   - Test-driven development focus
-   - Professional workflow training
-   - Tech: Python, Testing, Technical Writing
-
 ### Personal Projects
 
-4. **Spotify Audio Visualizer Overlay** (In Progress)
-   - Fullscreen audio visualizer for Spotify
-   - Real-time frequency analysis
-   - Immersive listening experience
-   - Tech: JavaScript, Spotify API, Canvas, Web Audio API
+**Spotify Audio Visualizer Overlay**
+   - Real-time audio visualizer with transparent overlay
+   - FFT-based frequency analysis with 300 wave points
+   - VB-CABLE integration for system-wide audio capture
+   - Smart silence detection and 60 FPS smooth animations
+   - Tech: Python, NumPy, Tkinter, SoundDevice, FFT
+   - [View on GitHub](https://github.com/venecsmoy/spotify-wave-visualizer)
 
 ## Technologies
 
@@ -53,14 +73,22 @@ This is a static portfolio site built with vanilla HTML, CSS, and JavaScript, de
 - **Cloud & Data:** Cloud Platforms (GCP), Cloud Data Warehousing, AI/ML Services
 - **Tools:** Git, GitHub, Claude Code, VS Code
 
-## Deployment
+## Making Updates
 
-This site is designed to be deployed on GitHub Pages:
+After making changes to your portfolio:
 
-1. Push to GitHub repository
-2. Enable GitHub Pages in repository settings
-3. Select `main` branch and root directory
-4. Site will be live at `https://<username>.github.io/<repository>/`
+```bash
+# Stage your changes
+git add .
+
+# Commit with a descriptive message
+git commit -m "Your update description"
+
+# Push to GitHub (automatically deploys to GitHub Pages)
+git push origin main
+```
+
+Your changes will be live within 1-2 minutes!
 
 ## Local Development
 
